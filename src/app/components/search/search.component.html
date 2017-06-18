@@ -1,3 +1,13 @@
-<p>
-  search works!
-</p>
+<div class="container top-30">
+
+<div class="col-md-4">
+  Buscar artistas
+  <hr>
+  <input type="text" name="termino" value="" placeholder="Buscar artista..." [(ngModel)]="termino">
+  <button (click)="buscarArtista(termino); termino=''"
+    type="button"  class="btn btn-secondary">Buscar</button>
+
+</div>
+
+
+</div>
