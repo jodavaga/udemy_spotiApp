@@ -10,6 +10,9 @@ export class SpotifyService {
 
   artistas:any[] = [];
   artista:any;
+  topTracks:any[];
+
+  bearer = "Bearer BQAhD0n9Vx51Z2z6UOLBY0elKYpmK_-s4ozg2iRsAsQFUJC09ftGlerUa8Pe4A0dMvUnCAC55otb6WKCbnCwiQ";
 
 
   constructor( private http: Http ) { 
@@ -24,7 +27,7 @@ export class SpotifyService {
 
     //Parametros nuevos de API spotify para autorizacion
     let headers = new Headers();
-    headers.append ('authorization', 'Bearer BQC7PWonHV1alidVUcEeI5OmljYpvx0EWlrnQeyz8NC6ZRSdOpW49vGqGh9zcdInarftxbaUSiybpFqa8IgLGA');
+    headers.append ('authorization', this.bearer);
 
     let query: string = `?q=${ termino }&type=artist`;
     let url: string = this.urlBusqueda + query; 
@@ -45,17 +48,38 @@ export class SpotifyService {
 
     //Parametros nuevos de API spotify para autorizacion
     let headers = new Headers();
-    headers.append ('authorization', 'Bearer BQC7PWonHV1alidVUcEeI5OmljYpvx0EWlrnQeyz8NC6ZRSdOpW49vGqGh9zcdInarftxbaUSiybpFqa8IgLGA');
+    headers.append ('authorization', this.bearer);
 
     let query: string = `/${ id }`;
     let url: string = this.urlArtista + query; 
 
     return this.http.get( url, { headers } )
       .map( respuesta => {
-        //console.log(respuesta.json());
+        console.log(respuesta.json());
         
         return respuesta.json();
       });
   }
+
+  //obtengo lista de toptracks del artista
+  getTopTracks( id:string ){
+
+    //Parametros nuevos de API spotify para autorizacion
+    let headers = new Headers();
+    headers.append ('authorization', this.bearer);
+
+    let query: string = `/${ id }/top-tracks?country=us`;
+    let url: string = this.urlArtista + query; 
+
+    return this.http.get( url, { headers } )
+      .map( respuesta => {
+        console.log("tracks :");
+        console.log( respuesta.json().tracks);
+        
+        return respuesta.json().tracks
+      })
+  }
+
+  
 
 }

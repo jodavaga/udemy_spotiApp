@@ -12,6 +12,10 @@ hr{
   margin-top: 30px;
 }
 
+.img-radius{
+  border-radius: 50%;
+}
+
 .jumbotron{
   background-color: #171717;
 }
@@ -35,7 +39,6 @@ hr{
   }
 }
 
-
 .main-container{
   margin-top: 30px;
 }
@@ -43,7 +46,6 @@ hr{
 .img-circle{
   border-radius: 100%;
 }
-
 
 /* Animaciones */
 .animated {

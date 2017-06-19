@@ -3,11 +3,10 @@
 
     <div class="col-md-4">
       Buscar artistas
-      <hr>
       <input (keyup)="buscarArtista(termino);" (keyup.enter)="termino='';"
              [(ngModel)]="termino"
         type="text" name="termino" value="" placeholder="Buscar artista..." class="form-control" >
-      
+      <hr>
       <button (click)="buscarArtista(termino); termino=''"  
         type="button"  class="btn btn-secondary">Buscar</button>
 
@@ -18,8 +17,8 @@
       <div class="row">
         <div *ngFor="let artista of _spotifyService.artistas"
              [routerLink]="['/artist', artista.id]"
-          class="col-md-3 text-center puntero" >
-          <img [src]="artista.images | sinfoto" class="img-fluid img-thumbnail">
+            class="col-md-3 text-center puntero" >
+          <img [src]="artista.images | sinfoto:1" class="img-fluid img-thumbnail">
           {{ artista.name }}
           <hr>
         </div>
